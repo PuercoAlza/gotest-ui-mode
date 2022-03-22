@@ -7,7 +7,7 @@
 ;; Created: Feb 18, 2018
 ;; Keywords: languages go
 ;; Version: 0.1.0
-;; Package-Requires: ((emacs "25") (s "1.12.0") (gotest "0.14.0") (projectile "2.2.0"))
+;; Package-Requires: ((emacs "25") (s "1.12.0") (gotest "0.14.0"))
 ;;
 ;; This file is not a part of GNU Emacs.
 ;;
@@ -42,7 +42,7 @@
 (require 'json)
 (require 'compile)
 
-(require 'projectile)
+(require 'project)
 (require 'gotest)
 (require 's)
 
@@ -693,7 +693,7 @@ expression was read."
 (defun gotest-ui-current-project ()
   "Launch go test on the current buffer's project."
   (interactive)
-  (let ((default-directory (projectile-project-root)))
+  (let ((default-directory (cdr (project-current))))
     (gotest-ui (gotest-ui--command-line "./..."))))
 
 (provide 'gotest-ui)
